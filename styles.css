@@ -1,4 +1,5 @@
-/* --- Complete CSS with Mobile Fixes --- */
+/* --- Complete CSS with Mobile Fixes (Consolidated File) --- */
+
 :root {
     /* Primary Colors & Text */
     --primary-color: #4a90e2;
@@ -27,8 +28,8 @@
 html {
     scroll-behavior: smooth;
     /* Enables smooth scrolling for anchor links */
-    scroll-padding-top: 70px;
-    /* Offset the scroll position by 70px (slightly more than navbar height) */
+    scroll-padding-top: 120px;
+    /* FIX: Increased offset to clear the fixed navbar (nav is at top: 60px + its height) */
 }
 
 body {
@@ -299,6 +300,8 @@ body {
 /* --- 4. About Section --- */
 .about-section {
     text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .profile-pic {
@@ -306,7 +309,8 @@ body {
     height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    /* MODIFIED: Increased for better separation from text below */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     border: 4px solid #ffffff;
 }
@@ -314,7 +318,8 @@ body {
 .about-section h2 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 900;
-    margin-top: 0;
+    margin-top: 50px;
+    /* MODIFIED: Added margin-top to separate from previous content/section header */
     margin-bottom: 20px;
     color: var(--dark-text);
 }
@@ -323,7 +328,8 @@ body {
     font-size: 1.25rem;
     line-height: 1.8;
     color: var(--light-text);
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 30px;
 }
 
 .social-links {
@@ -334,6 +340,8 @@ body {
     justify-content: center;
     gap: 25px;
 }
+
+/*මොන මගුලක්ද වැඩ කරපන්කෝ බන් 🥹*/
 
 .social-link a {
     color: var(--dark-text);
@@ -391,6 +399,7 @@ body {
     font-weight: 500;
     color: #333;
 }
+
 
 
 /* * ----------------------------------------------------------------------
@@ -823,7 +832,8 @@ body {
     }
 
     html {
-        scroll-padding-top: 70px;
+        scroll-padding-top: 120px;
+        /* FIX: Updated to match desktop for consistency */
     }
 
     .hero-title {
@@ -843,6 +853,19 @@ body {
     }
 
     /* About Section */
+    .about-section h2 {
+        font-size: 2.2rem;
+        /* Adjusted for consistency */
+        margin-top: 40px;
+        /* MODIFIED: Spacing adjustment for smaller screens */
+        margin-bottom: 15px;
+    }
+
+    .profile-pic {
+        margin-bottom: 30px;
+        /* MODIFIED: Consistency with desktop/small increase */
+    }
+
     .about-content p {
         font-size: 1.1rem;
     }
@@ -1027,7 +1050,8 @@ body {
     }
 
     html {
-        scroll-padding-top: 50px;
+        scroll-padding-top: 60px;
+        /* FIX: Increased for mobile clarity */
     }
 
     /* --- TIMELINE: ADDRESS OVERFLOW --- */
