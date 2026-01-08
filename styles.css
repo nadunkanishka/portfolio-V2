@@ -2,10 +2,10 @@
 
 :root {
     /* Primary Colors & Text */
-    --primary-color: #4F7942; /* Sage Green (Primary Action Color) */
-    --primary-dark: #3B5B30; /* Darker Sage for hover state */
-    --accent-vibrant: #8FBC8F; /* Vibrant Lime/Moss Green (Vibrant Accent) */
-    --badge-bg: #F0F7F0; /* Very light green for role badge */
+    --primary-color: #1C3D6D; /* Deep Navy Blue (Primary Action Color) */
+    --primary-dark: #142B4C; /* Darker Navy (Used for hover states) */
+    --accent-vibrant: #E07A5F; /* Muted Coral/Salmon (Vibrant Accent) */
+    --badge-bg: #E6EFFF; /* Very Light Blue (for role badge) */
 
     --dark-text: #1c1c1e;
     --medium-text: #636366;
@@ -14,11 +14,11 @@
     /* Backgrounds & Separators */
     --background-color: #ffffff;
     /* Pure White for card components */
-    --base-background: #f9fff7;
-    /* Lightest green/gray for body/sections (matches dot background color) */
+    --base-background: #f7f9fd;
+    /* Lightest Gray/Blue for body/sections (matches dot background color) */
     --line-color: #e0e0e0;
     --line-color-dark: #c9d2db;
-    --highlight-color: #F4FFF4; /* Very pale green tint for highlights */
+    --highlight-color: #FEEFEE; /* Very Pale Coral/Pink tint for highlights */
 
     /* Spacing */
     --spacing-unit: 80px;
@@ -252,8 +252,8 @@ body {
     border-radius: 20px;
     font-weight: 900;
     white-space: nowrap;
-    /* UPDATED: Uses the hex value of accent-vibrant for shadow */
-    box-shadow: 0 2px 5px rgba(143, 188, 143, 0.2); 
+    /* UPDATED: Uses the hex value of accent-vibrant for shadow (E07A5F) */
+    box-shadow: 0 2px 5px rgba(224, 122, 95, 0.2); 
     position: relative;
     top: -2px;
 }
@@ -268,16 +268,16 @@ body {
     font-weight: 600;
     border-radius: 50px;
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    /* UPDATED: Uses primary-color (Sage Green) for shadow */
-    box-shadow: 0 8px 20px rgba(79, 121, 66, 0.4); 
+    /* UPDATED: Uses primary-color (Deep Navy Blue) for shadow (1C3D6D) */
+    box-shadow: 0 8px 20px rgba(28, 61, 109, 0.4); 
 }
 
 .hero-cta:hover {
     /* UPDATED: Uses primary-dark variable */
     background-color: var(--primary-dark); 
     transform: translateY(-3px);
-    /* UPDATED: Uses primary-color (Sage Green) for hover shadow */
-    box-shadow: 0 12px 25px rgba(79, 121, 66, 0.55);
+    /* UPDATED: Uses primary-color (Deep Navy Blue) for hover shadow (1C3D6D) */
+    box-shadow: 0 12px 25px rgba(28, 61, 109, 0.55);
 }
 
 .scroll-hint {
@@ -557,7 +557,7 @@ body {
 }
 
 
-/* --- 7. Projects Section --- */
+/* --- 7. Projects Section (Revised for Light Theme - Now Single Column & Button CTA) --- */
 .projects-section {
     padding-bottom: var(--spacing-unit);
 }
@@ -573,52 +573,54 @@ body {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* CHANGE 1: Force Single Column layout for all sizes (more readable list format) */
+    grid-template-columns: 1fr;
     gap: 30px;
 }
 
 .project-card {
-    min-height: 350px;
+    min-height: 200px; /* Adjusted min-height */
     border-radius: 12px;
-    box-shadow: var(--card-shadow);
+    
+    /* NEW LIGHT CARD STYLING */
+    background-color: var(--background-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--line-color);
+
     text-decoration: none;
     overflow: hidden;
     position: relative;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s ease-out;
+    
+    transition: transform 0.3s ease-out, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start; 
 }
 
-/* Dark Overlay */
 .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: background-color 0.3s;
-    z-index: 1;
+    content: none; 
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover::before {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: transparent;
 }
 
 /* Content Styling */
 .project-content {
     padding: 25px;
-    color: #ffffff;
+    color: var(--dark-text); 
     position: relative;
     z-index: 2;
+    /* ADDED: Flex container to push button to the bottom */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .project-content h3 {
@@ -626,20 +628,23 @@ body {
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
+    color: var(--primary-color); 
 }
 
 .project-content p {
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 15px;
-    color: #dddddd;
+    color: var(--medium-text); 
+    /* NEW: Allows the link-text button to sit below the description */
+    flex-grow: 1; 
 }
 
 .project-content .tags span {
     display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    border: 1px solid var(--line-color); 
+    background-color: var(--highlight-color);
+    color: var(--medium-text);
     font-size: 0.75rem;
     padding: 3px 8px;
     border-radius: 4px;
@@ -648,36 +653,34 @@ body {
 }
 
 .project-content .link-text {
-    color: var(--primary-color);
-    font-weight: 600;
+    /* CHANGE 2: Convert to Button Style */
     display: inline-block;
-    margin-top: 15px;
-    background-color: #ffffff;
-    padding: 6px 12px;
+    align-self: flex-start; /* Aligns the button to the left */
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff; /* White text for button */
+    font-weight: 600;
     border-radius: 50px;
-    font-size: 0.85rem;
-    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    text-decoration: none; /* Remove underline */
+    
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover .link-text {
-    background-color: #f0f0f0;
+    /* Button Hover Effect */
+    background-color: var(--primary-dark); 
+    transform: translateY(-2px);
+    /* UPDATED: Uses primary-color (Deep Navy Blue) for hover shadow (1C3D6D) */
+    box-shadow: 0 8px 15px rgba(28, 61, 109, 0.3);
+    color: #ffffff;
 }
 
-/* Individual image background assignments */
-#project-1 {
-    background-image: url('https://picsum.photos/seed/system/1200/600');
-}
-
-#project-2 {
-    background-image: url('https://picsum.photos/seed/checkout/1200/600');
-}
-
-#project-3 {
-    background-image: url('https://picsum.photos/seed/ai-dash/1200/600');
-}
-
-#project-4 {
-    background-image: url('https://picsum.photos/seed/mobile-app/1200/600');
+/* REMOVED: Individual image background assignments */
+#project-1, #project-2, #project-3, #project-4 {
+    background-image: none !important;
 }
 
 
